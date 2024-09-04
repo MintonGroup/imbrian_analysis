@@ -1,6 +1,6 @@
 # imbrian_analysis
 
-This script assumes you have downloaded the data from Fortress (doi:) and are running from the same directory that the data are in.
+This script assumes you have downloaded the data from PURR (doi:) and are running from the same directory that the data are in.
 
 This repository contains scripts necessary to plot figures in the paper. Each relevant figure has a routine that will plot it, with the exception of Figs. 12-14, all of which are plotted in the generate_scaled_plots() routine. generate_scaled_plots(outliers=False) plots Figs. 12 and 13, while generate_scaled_plots(outliers=True) plots Figs. 12 and 14. The generation of Figure 5 is done in a separate script, as it handles raw CTEM output which takes longer to process.
 
