@@ -29,7 +29,7 @@ def find_melt_at_pixel(x,y,depth):
 
 if __name__ == '__main__':
 
-	path = os.path.join(os.getcwd(),'figure_5_data')
+	path = os.path.join(os.getcwd(),'ray_generation_data')
 	gridsize = 1000
 	pix = 12.32e3
 	pixkm = pix / 1000
