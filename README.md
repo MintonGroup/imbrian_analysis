@@ -6,6 +6,6 @@ This repository contains scripts necessary to plot figures in the paper. Each re
 
 To run the script, first make sure the necessary Python packages have been installed (e.g. all the packages the script imports). Then, using a terminal, run the script by entering the command: python analyze_data.py 
 
-To generat Figure 5, run: python generate_figure_5.py
+To generate a ray figure like Figure 5 in the paper, run: python generate_ray_figure.py
 
 By default, every figure-generating routine is ran upon entering the above command. This can be modified by commenting the routines on lines 1179-1187. Additionally, un-commenting lines 1191-1193 will display in the terminal a verbose list of NPF to RPF conversions for bin boundaries (see Supporting Information sec. S1).
