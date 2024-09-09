@@ -125,8 +125,8 @@ def change_iridum_age(mts,la,qa,age='3.8072054'): #age must be a string of eithe
 
     return crp, lrp, qrp
 
-def generate_figure_1():
-    '''Generates figure of NPF and RPF, along with datapoints'''
+def plot_npf_and_rpf():
+    '''Generates figure of NPF and RPF, along with datapoints''' #F.1
 
     t = np.linspace(0, 4.6, 100000)
     oldnpf = 5.44e-14*(np.exp(6.93*t)-1)+8.38e-4*t
@@ -167,6 +167,7 @@ def generate_figure_1():
     n1_error_sc = np.array([0.0003, 0.11e-4, 0.21e-4])
 
     f1 = plt.figure(1)
+    f1.clf()
     a1 = f1.add_subplot(111)
     a1.plot(t, npf, color='r', label='Neukum Production Function (NPF)')
     a1.plot(t, rpf, color='b', label='Robbins Production Function (RPF)')
@@ -201,10 +202,11 @@ def generate_figure_1():
 
 
 
-def generate_figure_2():
-    '''Generates figure of histogram of Imbrian-aged samples from the compendium of Michael et al. (2018)'''
+def plot_michael_histogram():
+    '''Generates figure of histogram of Imbrian-aged samples from the compendium of Michael et al. (2018)''' #F.2
 
     f1 = plt.figure(1)
+    f1.clf()
     a1 = f1.add_subplot(111)
     a1.bar(bin_centers, hist14, bottom=0, width=0.07183406, color='#fef0d9', edgecolor='k', label='Apollo 14')
     a1.bar(bin_centers, hist15, bottom=hist14, width=0.07183406, color='#fdcc8a', edgecolor='k', label='Apollo 15')
@@ -223,8 +225,8 @@ def generate_figure_2():
 
 
 
-def generate_figure_7():
-    '''generates a plot of local melt for all Apollo sites under both the NPF and RPF'''
+def plot_local_melt():
+    '''generates a plot of local melt for all Apollo sites under both the NPF and RPF''' #F.7
 
     r14lrp = convert_npf_to_rpf(a14lrp)
     r15lrp = convert_npf_to_rpf(a15lrp)
@@ -234,6 +236,7 @@ def generate_figure_7():
     #plot
 
     f1, a1 = plt.subplots(nrows=4,ncols=1,figsize=(7,25))
+    f1.clf()
     a1[3].plot(newtimes,a17lrp/a17qrp[6],color='r',label='NPF')
     a1[3].plot(newtimes,r17lrp/a17qrp[6],color='b',label='RPF')
     a1[3].set_xlim(3.95,3.0)
@@ -273,8 +276,8 @@ def generate_figure_7():
 
     return
 
-def generate_figure_8():
-    '''Generates plot of NPF and RPF including local and sub-basin melt, with and without max rays'''
+def plot_relative_probability():
+    '''Generates plot of relative probability under the NPF and RPF including local and sub-basin melt, with and without max rays''' #F.8
 
     #These are the simulations that are classified as outliers in Figure 9
 
@@ -343,6 +346,7 @@ def generate_figure_8():
     #Plot Figure 8
 
     f1, a1 = plt.subplots(nrows=4,ncols=2,figsize=(15,15))
+    f1.clf()
     a1[3,0].plot(newtimes,a17lrp/a17qrp[6],color='b',label='Melt from small craters')
     a1[3,0].plot(newtimes,a17qrp/a17qrp[6],color='#af4d43',label='Melt from basins and sub-basins')
     a1[3,0].plot(newtimes,a17crp/a17qrp[6],color='k',label='Total melt')
@@ -460,7 +464,7 @@ def generate_figure_8():
 
     return
 
-def generate_figure_9():
+def plot_imbrian_melt(): #F.9
     '''Generates box plot of Imbrian melt by crater name'''
 
     a14ml = a14melts.drop('Unnamed: 0',axis=1) / (pix*pix)
@@ -522,6 +526,7 @@ def generate_figure_9():
     #Plot Figure 9
 
     f3, a3 = plt.subplots(nrows=2,ncols=2,figsize=(10,10))
+    f3.clf()
     a3[0,0].boxplot(a14mfs_D)
     a3[0,0].set_title('(a) Apollo 14')
     a3[0,0].set_xticklabels(a14names_D)
@@ -543,8 +548,8 @@ def generate_figure_9():
 
     return
 
-def generate_figure_10():
-    '''Generates figure for A15 with different ages for Iridum'''
+def plot_variable_iridum_age(): 
+    '''Generates figure for A15 with different ages for Iridum''' #F.10
 
     a15crp387, a15lrp387, a15qrp387 = change_iridum_age(a15melts.drop('Unnamed: 0',axis=1) / (pix*pix),a15la,a15qa.copy(),age='3.87903947')
     a15crp380, a15lrp380, a15qrp380 = change_iridum_age(a15melts.drop('Unnamed: 0',axis=1) / (pix*pix),a15la,a15qa.copy())
@@ -572,8 +577,8 @@ def generate_figure_10():
 
     return
 
-def generate_figure_11():
-    '''Generates relative probability curve with Iridum being 3.80 Ga'''
+def plot_3800ma_iridum():
+    '''Generates relative probability curve with Iridum being 3.80 Ga''' #F.11
 
     a14crp380, a14lrp380, a14qrp380 = change_iridum_age(a14melts.drop('Unnamed: 0',axis=1) / (pix*pix),a14la,a14qa.copy())
     a15crp380, a15lrp380, a15qrp380 = change_iridum_age(a15melts.drop('Unnamed: 0',axis=1) / (pix*pix),a15la,a15qa.copy())
@@ -644,6 +649,7 @@ def generate_figure_11():
     #Plot Figure 11
 
     f1, a1 = plt.subplots(nrows=4,ncols=2,figsize=(15,15))
+    f1.clf()
     a1[3,0].plot(newtimes,a17lrp380/a17qrp380[5],color='b',label='Melt from small craters')
     a1[3,0].plot(newtimes,a17qrp380/a17qrp380[5],color='#af4d43',label='Melt from basins and sub-basins')
     a1[3,0].plot(newtimes,a17crp380/a17qrp380[5],color='k',label='Total melt')
@@ -1048,7 +1054,7 @@ def generate_scaled_plots(outliers=False): #Generates Figure 13 if outliers=Fals
         #Plot Figure 14
 
         f1, a1 = plt.subplots(nrows=4,ncols=2,figsize=(15,15))
-
+        f1.clf()
         a1[0,0].bar(bin_centers+offset,hist14,width=(0.07183406/3),color='goldenrod',edgecolor='k',label='Observed Apollo 14 Melts')
         a1[0,0].bar(bin_centers2-offset,sa14lrp380m[:-1],yerr=np.sqrt(sa14lrp380m[:-1]),color='b',edgecolor='k',bottom=0,width=0.07183406/3,label='Local melt')
         a1[0,0].bar(bin_centers2-offset,sa14qrp380m[:-1],yerr=np.sqrt(sa14qrp380m[:-1]),color='#af4d43',edgecolor='k',bottom=sa14lrp380m[:-1],width=0.07183406/3,label='sub-basin melt')
@@ -1203,13 +1209,13 @@ if __name__ == '__main__':
     a17crp, a17lrp, a17qrp = calculate_combined_relative_probabilities(a17la.drop('Unnamed: 0',axis=1),a17qa.drop('Unnamed: 0',axis=1))
 
     
-    generate_figure_1()
-    generate_figure_2()
-    generate_figure_7()
-    generate_figure_8()
-    generate_figure_9()
-    generate_figure_10()
-    generate_figure_11()
+    plot_npf_and_rpf()
+    plot_michael_histogram()
+    plot_local_melt()
+    plot_relative_probability()
+    plot_imbrian_melt()
+    plot_variable_iridum_age()
+    plot_3800ma_iridum()
     generate_scaled_plots(outliers=False)
     generate_scaled_plots(outliers=True)
 
